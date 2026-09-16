@@ -122,3 +122,22 @@ app/src/main/java/com/netscope/app/
   column then shows nothing. Reading a full IEEE OUI file into `Oui.kt` improves
   vendor coverage.
 - The subnet sweep assumes a `/24`. Widen `NetworkScanner.scan()` for other masks.
+
+## Releasing to GitHub
+
+CI is set up in `.github/workflows/`:
+
+- **build.yml** — builds a debug APK on every push to `main` / PR and uploads it as
+  a run artifact.
+- **release.yml** — on pushing a `v*` tag, builds the APK and attaches it to a
+  GitHub Release (with auto-generated notes). No signing secrets needed (debug APK).
+
+Cut a release:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0     # release.yml builds + publishes the APK automatically
+```
+
+The 50 MB debug APK is intentionally **not** committed to the repo — it is produced
+by CI and attached to the Release as a downloadable asset.
