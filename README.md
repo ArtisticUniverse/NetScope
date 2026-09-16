@@ -23,7 +23,7 @@ never captures traffic, breaks into devices, or reads private data.
 - Per device: name, address, type (Classic/LE/Dual), pairing state, signal (RSSI),
   device class, and advertised service UUIDs. Audio‑capable devices are tagged.
 
-### 4. Wi‑Fi Motion Sensing
+### 3. Wi‑Fi Motion Sensing
 - Polls the associated AP's RSSI (~250 ms) and measures its rolling variance.
 - A still room has a low, flat noise floor; a person walking makes the signal
   jitter, which is flagged as "MOVEMENT DETECTED".
@@ -32,7 +32,7 @@ never captures traffic, breaks into devices, or reads private data.
   sensing (stock Android doesn't expose CSI), so it's approximate and can be fooled
   by interference or by moving the phone.
 
-### 5. AR Wi‑Fi Heatmap (ARCore)
+### 4. AR Wi‑Fi Heatmap (ARCore)
 - Uses ARCore (via SceneView) to track the camera's real 6‑DoF world pose.
 - As you walk, it samples RSSI every ~0.35 m into world‑anchored points and paints
   green→red patches, projected back to screen with the camera's view/projection
@@ -41,7 +41,7 @@ never captures traffic, breaks into devices, or reads private data.
 - Degrades honestly: on a non‑ARCore device or without "Google Play Services for
   AR", it shows an "AR unavailable" message instead of crashing.
 
-### 3. Multi‑Audio
+### 5. Multi‑Audio
 - Lists the phone's current audio outputs and flags Bluetooth/LE‑Audio ones.
 - Lets you pick a local track and play it.
 - **Honest capability detection** — see the note below.
